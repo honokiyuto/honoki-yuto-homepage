@@ -1,18 +1,27 @@
 import { defineConfig } from 'eslint/config';
 import eslintPluginAstro from 'eslint-plugin-astro';
+import oxlint from 'eslint-plugin-oxlint';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 export default defineConfig([
   ...eslintPluginAstro.configs.recommended,
+  ...oxlint.configs['flat/recommended'],
   {
-    ignores: ['dist', 'node_modules'],
+    plugins: {
+      'unused-imports': unusedImports,
+    },
     rules: {
-      'jsx-a11y/no-static-element-interactions': 'off',
-      'jsx-a11y/click-events-have-key-events': 'off',
-      'jsx-a11y/no-noninteractive-element-interactions': 'off',
-      'jsx-a11y/no-noninteractive-tabindex': 'off',
-      'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
-      'jsx-a11y/no-autofocus': 'off',
-      'jsx-a11y/no-redundant-roles': 'off',
+      'no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 ]);
