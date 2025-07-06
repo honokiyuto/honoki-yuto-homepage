@@ -60,6 +60,45 @@ export const MultiScroll = ({ sections = TEST_SECTIONS }: Props) => {
     [sections]
   );
 
+  // URLハッシュからactiveIndexを取得する関数
+  const getActiveIndexFromHash = useCallback(() => {
+    const hash = window.location.hash.slice(1); // '#' を除去
+    const index = sectionNames.findIndex((name) => name === hash);
+    return index >= 0 ? index : 0;
+  }, [sectionNames]);
+
+  // activeIndexが変更されたときにURLハッシュを更新
+  useEffect(() => {
+    const currentHash = window.location.hash.slice(1);
+    const currentSectionName = sectionNames[activeIndex];
+
+    if (currentHash !== currentSectionName) {
+      // history.replaceState を使ってブラウザ履歴を汚さないようにする
+      history.replaceState(null, '', `#${currentSectionName}`);
+    }
+  }, [activeIndex, sectionNames]);
+
+  // 初期化時とpopstateイベント時にURLハッシュから現在のセクションを設定
+  useEffect(() => {
+    // 初期化時にURLハッシュから現在のセクションを設定
+    const initialIndex = getActiveIndexFromHash();
+    if (initialIndex !== activeIndex) {
+      setActiveIndex(initialIndex);
+    }
+
+    // popstateイベント（戻る/進むボタン）を監視
+    const handlePopState = () => {
+      const hashIndex = getActiveIndexFromHash();
+      setActiveIndex(hashIndex);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [getActiveIndexFromHash, activeIndex]);
+
   const handleScroll = useCallback(
     (direction: 'down' | 'up') => {
       if (isScrolling) return;
