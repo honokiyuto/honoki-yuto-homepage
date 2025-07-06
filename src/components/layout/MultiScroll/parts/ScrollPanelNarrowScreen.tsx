@@ -1,15 +1,15 @@
-import type { Section } from '../constants';
+import type { ReactNode } from 'react';
 
 type Props = {
-  upperSections: Section[];
-  lowerSections: Section[];
+  upperComponents: ReactNode[];
+  lowerComponents: ReactNode[];
   sectionCount: number;
   activeIndex: number;
 };
 
 export const ScrollPanelNarrowScreen = ({
-  upperSections,
-  lowerSections,
+  upperComponents,
+  lowerComponents,
   sectionCount,
   activeIndex,
 }: Props) => {
@@ -25,28 +25,18 @@ export const ScrollPanelNarrowScreen = ({
         >
           <div className="flex flex-col h-full w-full">
             {/* 上半分: 右セクション */}
-            <div
-              className={`w-full h-1/2 flex items-center justify-center text-white text-center p-8 ${upperSections[index]?.bgColor || 'bg-gray-700'}`}
-            >
-              {upperSections[index] && (
-                <div className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
-                  <h2 className="text-4xl font-bold mb-4">
-                    {upperSections[index].title}
-                  </h2>
-                  <p className="text-lg">{upperSections[index].content}</p>
+            <div className="h-1/2">
+              {upperComponents[index] && (
+                <div className="w-full h-full transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
+                  {upperComponents[index]}
                 </div>
               )}
             </div>
             {/* 下半分: 左セクション */}
-            <div
-              className={`w-full h-1/2 flex items-center justify-center text-white text-center p-8 ${lowerSections[index]?.bgColor || 'bg-gray-700'}`}
-            >
-              {lowerSections[index] && (
-                <div className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
-                  <h2 className="text-4xl font-bold mb-4">
-                    {lowerSections[index].title}
-                  </h2>
-                  <p className="text-lg">{lowerSections[index].content}</p>
+            <div className="h-1/2">
+              {lowerComponents[index] && (
+                <div className="w-full h-full transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
+                  {lowerComponents[index]}
                 </div>
               )}
             </div>

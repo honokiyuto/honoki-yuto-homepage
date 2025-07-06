@@ -5,74 +5,45 @@ import { NavigationDots } from './parts/NavigationDots';
 import { ScrollPanelWideScreen } from './parts/ScrollPanelWideScreen';
 import { ScrollPanelNarrowScreen } from './parts/ScrollPanelNarrowScreen';
 
-// 各セクションのコンテンツを定義
-// 左側のパネルのコンテンツ
-const leftSections: Section[] = [
+const TEST_SECTIONS: Section[] = [
   {
-    title: 'セクション 1',
-    content: 'これは左側の最初のセクションです。',
-    bgColor: 'bg-indigo-500',
+    left: <div className="bg-red-500 h-full">Section A(left)</div>,
+    right: <div className="bg-blue-500 h-full">Section A(right)</div>,
   },
   {
-    title: 'セクション 2',
-    content: 'ReactとTailwind CSSを使用して実装しています。',
-    bgColor: 'bg-purple-500',
+    left: <div>Section B(left)</div>,
+    right: <div>Section B(right)</div>,
   },
   {
-    title: 'セクション 3',
-    content: 'マウスホイールでスクロールできます。',
-    bgColor: 'bg-pink-500',
+    left: <div>Section C(left)</div>,
+    right: <div>Section C(right)</div>,
   },
   {
-    title: 'セクション 4',
-    content: '最後のセクションです。',
-    bgColor: 'bg-red-500',
-  },
-  {
-    title: 'セクション 5',
-    content: '最後のセクションです。',
-    bgColor: 'bg-red-500',
+    left: <div>Section D(left)</div>,
+    right: <div>Section D(right)</div>,
   },
 ];
 
-// 右側のパネルのコンテンツ
-const rightSections: Section[] = [
-  {
-    title: 'Section A',
-    content: 'This is the first section on the right side.',
-    bgColor: 'bg-sky-500',
-  },
-  {
-    title: 'Section B',
-    content: 'Implemented with React and Tailwind CSS.',
-    bgColor: 'bg-cyan-500',
-  },
-  {
-    title: 'Section C',
-    content: 'You can scroll with the mouse wheel.',
-    bgColor: 'bg-teal-500',
-  },
-  {
-    title: 'Section D',
-    content: 'This is the final section.',
-    bgColor: 'bg-emerald-500',
-  },
-  {
-    title: 'Section E',
-    content: 'This is the final section.',
-    bgColor: 'bg-emerald-500',
-  },
-];
+type Props = {
+  sections: Section[];
+};
 
-export const MultiScroll = () => {
+export const MultiScroll = ({ sections = TEST_SECTIONS }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
   const { isMobile } = useIsMobile();
 
-  const sectionCount = useMemo(
-    () => Math.max(leftSections.length, rightSections.length),
-    []
+  const sectionCount = useMemo(() => sections.length, [sections]);
+
+  const leftComponents = useMemo(
+    () => sections.map((section) => section.left),
+    [sections]
+  );
+
+  const rightComponents = useMemo(
+    () => sections.map((section) => section.right),
+    [sections]
   );
 
   const handleScroll = useCallback(
@@ -153,8 +124,8 @@ export const MultiScroll = () => {
         {isMobile ? (
           // スマホ表示: 1つのページとして上下にコンテンツを配置し、ページ全体をスクロール
           <ScrollPanelNarrowScreen
-            upperSections={leftSections}
-            lowerSections={rightSections}
+            upperComponents={leftComponents}
+            lowerComponents={rightComponents}
             sectionCount={sectionCount}
             activeIndex={activeIndex}
           />
@@ -162,12 +133,12 @@ export const MultiScroll = () => {
           // PC表示: 左右分割で逆方向にスクロール
           <div className="flex h-full w-full">
             <ScrollPanelWideScreen
-              sections={leftSections}
+              components={leftComponents}
               activeIndex={activeIndex}
               isLeft={true}
             />
             <ScrollPanelWideScreen
-              sections={rightSections}
+              components={rightComponents}
               activeIndex={activeIndex}
               isLeft={false}
             />
