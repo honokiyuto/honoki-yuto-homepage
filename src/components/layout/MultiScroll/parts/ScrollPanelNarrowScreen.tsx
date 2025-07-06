@@ -18,7 +18,7 @@ export const ScrollPanelNarrowScreen = ({
       {Array.from({ length: sectionCount }).map((_, index) => (
         <div
           key={index}
-          className="absolute w-full h-full transition-transform duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]"
+          className="absolute w-full h-full transition-transform duration-500 ease-[cubic-bezier(.94,.09,.89,.5)]"
           style={{
             transform: `translateY(${(index - activeIndex) * 100}%)`,
           }}
@@ -26,19 +26,11 @@ export const ScrollPanelNarrowScreen = ({
           <div className="flex flex-col h-full w-full">
             {/* 上半分: 右セクション */}
             <div className="h-1/2">
-              {upperComponents[index] && (
-                <div className="w-full h-full transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
-                  {upperComponents[index]}
-                </div>
-              )}
+              {upperComponents[index] && upperComponents[index]}
             </div>
             {/* 下半分: 左セクション */}
             <div className="h-1/2">
-              {lowerComponents[index] && (
-                <div className="w-full h-full transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
-                  {lowerComponents[index]}
-                </div>
-              )}
+              {lowerComponents[index] && lowerComponents[index]}
             </div>
           </div>
         </div>

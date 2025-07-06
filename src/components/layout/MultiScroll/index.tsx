@@ -4,10 +4,15 @@ import type { Section } from './constants';
 import { NavigationDots } from './parts/NavigationDots';
 import { ScrollPanelWideScreen } from './parts/ScrollPanelWideScreen';
 import { ScrollPanelNarrowScreen } from './parts/ScrollPanelNarrowScreen';
+import { TextTyping } from '../TextTyping';
 
 const TEST_SECTIONS: Section[] = [
   {
-    left: <div className="bg-red-500 h-full">Section A(left)</div>,
+    left: (
+      <div className="bg-red-500 h-full flex items-center justify-center">
+        <TextTyping text="Section A(left)" />
+      </div>
+    ),
     right: <div className="bg-blue-500 h-full">Section A(right)</div>,
   },
   {
@@ -25,7 +30,7 @@ const TEST_SECTIONS: Section[] = [
 ];
 
 type Props = {
-  sections: Section[];
+  sections?: Section[];
 };
 
 export const MultiScroll = ({ sections = TEST_SECTIONS }: Props) => {

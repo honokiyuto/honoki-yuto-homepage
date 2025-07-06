@@ -22,14 +22,12 @@ export const ScrollPanelWideScreen = ({
         return (
           <div
             key={index}
-            className={`absolute w-full h-full transition-transform duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]`}
+            className={`absolute w-full h-full transition-transform duration-500 ease-[cubic-bezier(.94,.09,.89,.5)]`}
             style={{
               transform: `translateY(${yOffset}%)`,
             }}
           >
-            <div className="w-full h-full transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
-              {component}
-            </div>
+            {component}
           </div>
         );
       })}
