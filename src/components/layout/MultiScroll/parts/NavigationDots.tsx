@@ -14,8 +14,10 @@ export const NavigationDots = ({
       <button
         key={index}
         onClick={() => setActiveIndex(index)}
-        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-          activeIndex === index ? 'bg-white scale-125' : 'bg-white/50'
+        className={`w-2 h-2 rounded-full ${
+          activeIndex === index
+            ? 'bg-white'
+            : 'bg-transparent border border-white'
         }`}
         aria-label={`Go to section ${index + 1}`}
       />
