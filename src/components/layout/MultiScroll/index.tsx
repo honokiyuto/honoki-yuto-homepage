@@ -1,43 +1,11 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useIsMobile } from './hooks/useIsMobile';
-import type { Section } from './constants';
 import { NavigationDots } from './parts/NavigationDots';
 import { ScrollPanelWideScreen } from './parts/ScrollPanelWideScreen';
 import { ScrollPanelNarrowScreen } from './parts/ScrollPanelNarrowScreen';
-import { TextTyping } from '../TextTyping';
+import { sections } from '@/components/sections';
 
-const TEST_SECTIONS: Section[] = [
-  {
-    anchorLinkName: 'section-a',
-    left: (
-      <div className="bg-red-500 h-full flex items-center justify-center">
-        <TextTyping text="Section A(left)" />
-      </div>
-    ),
-    right: <div className="bg-blue-500 h-full">Section A(right)</div>,
-  },
-  {
-    anchorLinkName: 'section-b',
-    left: <div>Section B(left)</div>,
-    right: <div>Section B(right)</div>,
-  },
-  {
-    anchorLinkName: 'section-c',
-    left: <div>Section C(left)</div>,
-    right: <div>Section C(right)</div>,
-  },
-  {
-    anchorLinkName: 'section-d',
-    left: <div>Section D(left)</div>,
-    right: <div>Section D(right)</div>,
-  },
-];
-
-type Props = {
-  sections?: Section[];
-};
-
-export const MultiScroll = ({ sections = TEST_SECTIONS }: Props) => {
+export const MultiScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 

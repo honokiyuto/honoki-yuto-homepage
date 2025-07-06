@@ -1,19 +1,17 @@
 ---
-
+import { sections } from '@/components/sections';
 ---
 
 <header class="absolute top-0 z-10">
-  <div><span></span><span></span><span></span></div>
   <nav>
     <ul>
-      <li><a href="#section-a">Top</a></li>
-      <li><a href="#section-b">About</a></li>
-      <li><a href="#section-c">Engineer</a></li>
-      <li><a href="#section-d">Illustrator</a></li>
-      <li>
-        <a href="#section-e">Licensed Psychologist</a>
-      </li>
-      <li><a href="#section-f">Links</a></li>
+      {
+        sections.map((section) => (
+          <li>
+            <a href={`#${section.anchorLinkName}`}>{section.anchorLinkName}</a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
