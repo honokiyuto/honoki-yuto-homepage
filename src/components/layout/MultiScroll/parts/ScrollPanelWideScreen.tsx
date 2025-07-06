@@ -28,13 +28,7 @@ export const ScrollPanelWideScreen = ({
             }}
           >
             <div className="flex items-center justify-center h-full text-white text-center p-8">
-              <div
-                className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]"
-                style={{
-                  opacity: index === activeIndex ? 1 : 0,
-                  transform: `translateY(${index === activeIndex ? '0' : '20px'})`,
-                }}
-              >
+              <div className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4">
                   {section.title}
                 </h2>

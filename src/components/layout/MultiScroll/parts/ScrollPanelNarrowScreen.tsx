@@ -29,13 +29,7 @@ export const ScrollPanelNarrowScreen = ({
               className={`w-full h-1/2 flex items-center justify-center text-white text-center p-8 ${upperSections[index]?.bgColor || 'bg-gray-700'}`}
             >
               {upperSections[index] && (
-                <div
-                  className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]"
-                  style={{
-                    opacity: index === activeIndex ? 1 : 0,
-                    transform: `translateY(${index === activeIndex ? '0' : '20px'})`,
-                  }}
-                >
+                <div className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
                   <h2 className="text-4xl font-bold mb-4">
                     {upperSections[index].title}
                   </h2>
@@ -48,13 +42,7 @@ export const ScrollPanelNarrowScreen = ({
               className={`w-full h-1/2 flex items-center justify-center text-white text-center p-8 ${lowerSections[index]?.bgColor || 'bg-gray-700'}`}
             >
               {lowerSections[index] && (
-                <div
-                  className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]"
-                  style={{
-                    opacity: index === activeIndex ? 1 : 0,
-                    transform: `translateY(${index === activeIndex ? '0' : '20px'})`,
-                  }}
-                >
+                <div className="transform transition-all duration-1000 ease-[cubic-bezier(.94,.09,.89,.5)]">
                   <h2 className="text-4xl font-bold mb-4">
                     {lowerSections[index].title}
                   </h2>
