@@ -18,7 +18,7 @@ body {
       opacity: 1;
     }
   }
-  --font-display: 'Oswald', 'sans-serif';
+  --font-oswald: 'Oswald', 'sans-serif';
 }
 
 /* Google フォント（https://fonts.googleapis.com/css?family=Oswald&display=swap） */
