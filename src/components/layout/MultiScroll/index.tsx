@@ -8,6 +8,7 @@ import { TextTyping } from '../TextTyping';
 
 const TEST_SECTIONS: Section[] = [
   {
+    anchorLinkName: 'section-a',
     left: (
       <div className="bg-red-500 h-full flex items-center justify-center">
         <TextTyping text="Section A(left)" />
@@ -16,14 +17,17 @@ const TEST_SECTIONS: Section[] = [
     right: <div className="bg-blue-500 h-full">Section A(right)</div>,
   },
   {
+    anchorLinkName: 'section-b',
     left: <div>Section B(left)</div>,
     right: <div>Section B(right)</div>,
   },
   {
+    anchorLinkName: 'section-c',
     left: <div>Section C(left)</div>,
     right: <div>Section C(right)</div>,
   },
   {
+    anchorLinkName: 'section-d',
     left: <div>Section D(left)</div>,
     right: <div>Section D(right)</div>,
   },
@@ -40,6 +44,11 @@ export const MultiScroll = ({ sections = TEST_SECTIONS }: Props) => {
   const { isMobile } = useIsMobile();
 
   const sectionCount = useMemo(() => sections.length, [sections]);
+
+  const sectionNames = useMemo(
+    () => sections.map((section) => section.anchorLinkName),
+    [sections]
+  );
 
   const leftComponents = useMemo(
     () => sections.map((section) => section.left),
@@ -141,11 +150,13 @@ export const MultiScroll = ({ sections = TEST_SECTIONS }: Props) => {
               components={leftComponents}
               activeIndex={activeIndex}
               isLeft={true}
+              sectionNames={sectionNames}
             />
             <ScrollPanelWideScreen
               components={rightComponents}
               activeIndex={activeIndex}
               isLeft={false}
+              sectionNames={sectionNames}
             />
           </div>
         )}

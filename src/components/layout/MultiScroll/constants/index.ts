@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 export type Section = {
+  anchorLinkName: string;
   left: ReactNode;
   right: ReactNode;
 };
