@@ -1,1 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+html,
+body {
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: none;
+}
