@@ -6,8 +6,8 @@ body {
   -webkit-overflow-scrolling: auto;
   overscroll-behavior: none;
   font-family: 'Oswald', 'sans-serif';
-  background-color: #222222;
-  color: #ffffff;
+  background-color: var(--color-dark-gray);
+  color: var(--color-white);
 }
 
 /* tailwind カスタムテーマ */
@@ -21,7 +21,26 @@ body {
       opacity: 1;
     }
   }
+  --animate-pathmove: pathmove 1.4s ease-in-out infinite;
+  @keyframes pathmove {
+    0% {
+      height: 0;
+      top: 0;
+      opacity: 0;
+    }
+    30% {
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      height: 0;
+      top: 50px;
+      opacity: 0;
+    }
+  }
   --font-oswald: 'Oswald', 'sans-serif';
+  --color-dark-gray: #222222;
+  --color-white: #ffffff;
 }
 
 /* Google フォント（https://fonts.googleapis.com/css?family=Oswald&display=swap） */

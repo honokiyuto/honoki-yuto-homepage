@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useIsMobile } from './hooks/useIsMobile';
 import { NavigationDots } from './parts/NavigationDots';
 import { ScrollPanelWideScreen } from './parts/ScrollPanelWideScreen';
 import { ScrollPanelNarrowScreen } from './parts/ScrollPanelNarrowScreen';
@@ -9,8 +8,6 @@ import { useUrlHash } from './hooks/useUrlHash';
 export const MultiScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-
-  const { isMobile } = useIsMobile();
 
   const sectionCount = useMemo(() => sections.length, [sections]);
 
@@ -109,30 +106,29 @@ export const MultiScroll = () => {
 
   return (
     <>
-      <div className="h-full w-full">
-        {isMobile ? (
-          // スマホ表示: 1つのページとして上下にコンテンツを配置し、ページ全体をスクロール
+      <div className="flex flex-col h-full w-full">
+        {/* PC表示 */}
+        <div className="hidden md:flex h-full w-full">
+          <ScrollPanelWideScreen
+            components={leftComponents}
+            activeIndex={activeIndex}
+            isLeft={true}
+          />
+          <ScrollPanelWideScreen
+            components={rightComponents}
+            activeIndex={activeIndex}
+            isLeft={false}
+          />
+        </div>
+        {/* スマホ表示 */}
+        <div className="flex md:hidden h-full w-full">
           <ScrollPanelNarrowScreen
             upperComponents={rightComponents}
             lowerComponents={leftComponents}
             sectionCount={sectionCount}
             activeIndex={activeIndex}
           />
-        ) : (
-          // PC表示: 左右分割で逆方向にスクロール
-          <div className="flex h-full w-full">
-            <ScrollPanelWideScreen
-              components={leftComponents}
-              activeIndex={activeIndex}
-              isLeft={true}
-            />
-            <ScrollPanelWideScreen
-              components={rightComponents}
-              activeIndex={activeIndex}
-              isLeft={false}
-            />
-          </div>
-        )}
+        </div>
       </div>
       <NavigationDots
         count={sectionCount}

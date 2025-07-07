@@ -1,5 +1,4 @@
-import { sections } from '@/components/sections';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const getActiveIndexFromHash = (sectionNames: string[]) => {
   const hash = window.location.hash.slice(1); // '#' を除去
