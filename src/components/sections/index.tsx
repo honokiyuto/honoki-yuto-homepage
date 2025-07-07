@@ -1,5 +1,5 @@
-import type { Section } from '../layout/MultiScroll/constants';
-import { TextTyping } from '../layout/TextTyping';
+import type { Section } from '../ui/MultiScroll/constants';
+import { TextTyping } from '../ui/TextTyping';
 import { AboutLeft, AboutRight } from './About';
 import { TopLeft, TopRight } from './Top';
 

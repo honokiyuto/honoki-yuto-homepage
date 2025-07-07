@@ -1,4 +1,4 @@
-import { TextTyping } from '@/components/layout/TextTyping';
+import { TextTyping } from '@/components/ui/TextTyping';
 import Orb from '@/components/ui/Orb/Orb';
 
 const ScrollDown = () => {

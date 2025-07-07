@@ -1,15 +1,15 @@
 ---
-import HeaderMenu from './parts/HeaderMenu.astro';
-import { HamburgerMenu } from './parts/HamburgerMenu';
+import NavigationMenu from '@/components/ui/NavigationMenu/index.astro';
+import { HamburgerMenu } from '@/components/ui/HamburgerMenu';
 ---
 
 <header class:list={['absolute', 'top-0', 'z-50', 'max-w-screen']}>
   <nav class:list={['p-10', 'md:flex', 'hidden']}>
-    <HeaderMenu />
+    <NavigationMenu />
   </nav>
   <nav
     class:list={[
-      'p-5', 
+      'p-5',
       'md:hidden',
       'flex',
       'items-center',
