@@ -39,15 +39,15 @@ export const HamburgerMenu = () => {
 
       {/* オーバーレイとメニュー */}
       <div
-        className={`fixed inset-0 z-40 flex items-center justify-center transition-all duration-700 ease-in-out ${
+        className={`fixed inset-0 z-40 flex items-center justify-center transition-all duration-300 ease-in-out ${
           isOpen ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
         onClick={toggleMenu}
       >
         {/* 円形拡大背景 */}
         <div
-          className={`absolute inset-0 bg-black/90 backdrop-blur-sm transition-all duration-700 ease-in-out ${
-            isOpen ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 ${
+            isOpen ? 'backdrop-blur-sm bg-black/80' : 'opacity-0'
           }`}
           style={{
             clipPath: isOpen
