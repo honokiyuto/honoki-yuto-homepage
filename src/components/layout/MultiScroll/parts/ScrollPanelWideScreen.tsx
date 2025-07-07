@@ -4,14 +4,12 @@ type Props = {
   components: ReactNode[];
   activeIndex: number;
   isLeft: boolean;
-  sectionNames: string[];
 };
 
 export const ScrollPanelWideScreen = ({
   components,
   activeIndex,
   isLeft,
-  sectionNames,
 }: Props) => {
   return (
     <div className="w-1/2 h-full relative overflow-hidden">
@@ -24,7 +22,6 @@ export const ScrollPanelWideScreen = ({
         return (
           <div
             key={index}
-            id={sectionNames[index]}
             className={`absolute w-full h-full transition-transform duration-500 ease-[cubic-bezier(.94,.09,.89,.5)]`}
             style={{
               transform: `translateY(${yOffset}%)`,
