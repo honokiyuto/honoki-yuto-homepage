@@ -5,6 +5,9 @@ body {
   scroll-behavior: auto;
   -webkit-overflow-scrolling: auto;
   overscroll-behavior: none;
+  font-family: 'Oswald', 'sans-serif';
+  background-color: #222222;
+  color: #ffffff;
 }
 
 /* tailwind カスタムテーマ */
