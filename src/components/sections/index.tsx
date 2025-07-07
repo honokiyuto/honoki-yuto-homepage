@@ -1,6 +1,8 @@
+import { LinkButton } from '../ui/LinkButton';
 import type { Section } from '../ui/MultiScroll/constants';
 import { TextTyping } from '../ui/TextTyping';
-import { AboutLeft, AboutRight } from './About';
+import { ImageCommon } from './ImageCommon';
+import { SectionCommon } from './SectionCommon';
 import { TopLeft, TopRight } from './Top';
 
 export const sections: Section[] = [
@@ -11,45 +13,69 @@ export const sections: Section[] = [
   },
   {
     anchorLinkName: 'about',
-    left: <AboutLeft />,
-    right: <AboutRight />,
+    left: (
+      <SectionCommon
+        title="about"
+        description="「Cafe」と申します。このホームページは私の趣味を発信する場として、今後の活動の出発点としたいと考えています。「エンジニアとしての私」、「絵師としての私」、「公認心理師としての私」の3つを通じて、自分を表現していけたらと思っています。"
+      />
+    ),
+    right: <ImageCommon src="/img/sign_img.png" alt="about" isCover={false} />,
   },
   {
-    anchorLinkName: 'section-c',
+    anchorLinkName: 'engineer',
     left: (
-      <div className="h-full flex items-center justify-center">
-        <TextTyping>Section C</TextTyping>
-      </div>
+      <SectionCommon
+        title="engineer"
+        links={[
+          {
+            label: 'GitHub',
+            href: 'https://github.com/honokiyuto',
+          },
+          {
+            label: 'Qiita',
+            href: 'https://qiita.com/dachscafe',
+          },
+        ]}
+      />
     ),
-    right: (
-      <div className="h-full flex items-center justify-center">
-        <TextTyping>Section C(right)</TextTyping>
-      </div>
-    ),
+    right: <ImageCommon src="/img/iphonescreen.png" alt="engineer" isTop />,
   },
   {
-    anchorLinkName: 'section-d',
+    anchorLinkName: 'illustrator',
     left: (
-      <div className="h-full flex items-center justify-center">
-        <TextTyping>Section D</TextTyping>
-      </div>
+      <SectionCommon
+        title="illustrator"
+        links={[
+          {
+            label: 'Skeb',
+            href: 'https://skeb.jp/@cafe_dachscafe',
+          },
+          {
+            label: 'X',
+            href: 'https://x.com/cafe_dachscafe',
+          },
+        ]}
+      />
     ),
-    right: (
-      <div className="bg-cyan-500 h-full flex items-center justify-center">
-        <TextTyping>Section D(right)</TextTyping>
-      </div>
-    ),
+    right: <ImageCommon src="/img/illust.png" alt="illustrator" isTop />,
   },
   {
-    anchorLinkName: 'section-e',
+    anchorLinkName: 'psychologist',
     left: (
-      <div className="bg-orange-500 h-full flex items-center justify-center">
-        <TextTyping>Section E</TextTyping>
-      </div>
+      <SectionCommon
+        title="psychologist"
+        links={[
+          {
+            label: 'coming soon...',
+            href: '#',
+            disabled: true,
+          },
+        ]}
+      />
     ),
     right: (
-      <div className="bg-teal-500 h-full flex items-center justify-center">
-        <TextTyping>Section E(right)</TextTyping>
+      <div className="h-full flex items-center justify-center bg-gradient-to-bl from-indigo-400 via-orange-200 to-slate-400">
+        <h2 className="text-2xl font-bold">Coming soon...</h2>
       </div>
     ),
   },
