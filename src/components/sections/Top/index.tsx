@@ -1,4 +1,5 @@
 import { TextTyping } from '@/components/layout/TextTyping';
+import Orb from '@/components/ui/Orb/Orb';
 
 const ScrollDown = () => {
   return (
@@ -13,7 +14,7 @@ const ScrollDown = () => {
 export const TopLeft = () => {
   return (
     <div className="h-full">
-      <div className="h-full flex md:items-center items-start justify-center">
+      <div className="h-full flex md:items-center items-start justify-center bg-black">
         <div className="p-10 max-w-3/4">
           <TextTyping isGradient>
             Welcome to the Cafe's Entrance 2023
@@ -27,6 +28,8 @@ export const TopLeft = () => {
 
 export const TopRight = () => {
   return (
-    <div className="bg-linear-to-br from-indigo-600 via-fuchsia-400 to-amber-200 h-full items-center justify-center"></div>
+    <div className="h-full flex md:items-center items-end justify-center bg-black">
+      <Orb hue={260} hoverIntensity={0.75} rotateOnHover={true} />
+    </div>
   );
 };
