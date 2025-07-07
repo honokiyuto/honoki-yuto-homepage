@@ -38,38 +38,57 @@ export const HamburgerMenu = () => {
       </button>
 
       {/* オーバーレイとメニュー */}
-      {isOpen && (
+      <div
+        className={`fixed inset-0 z-40 flex items-center justify-center transition-all duration-700 ease-in-out ${
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
+        onClick={toggleMenu}
+      >
+        {/* 円形拡大背景 */}
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center"
-          onClick={toggleMenu}
-        >
-          {/* 背景オーバーレイ */}
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+          className={`absolute inset-0 bg-black/90 backdrop-blur-sm transition-all duration-700 ease-in-out ${
+            isOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            clipPath: isOpen
+              ? 'circle(150% at 2.5rem 2.5rem)'
+              : 'circle(1rem at 2.5rem 2.5rem)',
+            transition: 'clip-path 0.7s ease-in-out, opacity 0.7s ease-in-out',
+          }}
+        />
 
-          {/* メニューコンテンツ */}
-          <nav
-            className="relative z-50"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ul className="flex flex-col items-center justify-center gap-8">
-              {sections.map((section) => (
-                <li
-                  key={section.anchorLinkName}
-                  className="text-xl font-light tracking-wider"
+        {/* メニューコンテンツ */}
+        <nav
+          className={`relative z-50 transition-all duration-500 delay-200 ${
+            isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ul className="flex flex-col items-center justify-center gap-8">
+            {sections.map((section, index) => (
+              <li
+                key={section.anchorLinkName}
+                className={`text-xl font-light tracking-wider transition-all duration-300 ${
+                  isOpen
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-4'
+                }`}
+                style={{
+                  transitionDelay: isOpen ? `${300 + index * 100}ms` : '0ms',
+                }}
+              >
+                <a
+                  href={`#${section.anchorLinkName}`}
+                  onClick={handleLinkClick}
+                  className="relative text-white hover:text-gray-300 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-white hover:after:w-full after:transition-[width] after:duration-300 after:ease-out uppercase"
                 >
-                  <a
-                    href={`#${section.anchorLinkName}`}
-                    onClick={handleLinkClick}
-                    className="relative text-white hover:text-gray-300 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-white hover:after:w-full after:transition-[width] after:duration-300 after:ease-out"
-                  >
-                    {section.anchorLinkName.toUpperCase()}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
+                  {section.anchorLinkName}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </>
   );
 };
