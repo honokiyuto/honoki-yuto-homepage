@@ -1,8 +1,7 @@
 ---
 import '@/styles/global.css';
-import { MultiScroll } from '@/components/layout/MultiScroll';
 import Header from '@/components/layout/Header/index.astro';
-import { sections } from '@/components/sections';
+import Main from '@/components/layout/Main/index.astro';
 ---
 
 <html lang="ja">
@@ -14,7 +13,7 @@ import { sections } from '@/components/sections';
     <title>Astro</title>
   </head>
   <body>
-    <Header sections={sections} />
-    <MultiScroll client:load/>
+    <Header />
+    <Main />
   </body>
 </html>
