@@ -1,34 +1,22 @@
 ---
-import { sections } from '@/components/sections';
+import HeaderMenu from './parts/HeaderMenu.astro';
+import { HamburgerMenu } from './parts/HamburgerMenu';
 ---
 
-<header class:list={['absolute', 'top-0', 'z-10']}>
-  <nav class:list={['p-10']}>
-    <ul class:list={['flex', 'items-center', 'justify-center', 'gap-10']}>
-      {
-        sections.map((section) => (
-          <li class:list={['text-md/relaxed', 'tracking-wider']}>
-            <a
-              class:list={[
-                'relative',
-                'after:absolute',
-                'after:bottom-0',
-                'after:left-0',
-                'after:h-[1px]',
-                'after:w-0',
-                'after:bg-white',
-                'hover:after:w-full',
-                'after:transition-[width]',
-                'after:duration-300',
-                'after:ease-out',
-              ]}
-              href={`#${section.anchorLinkName}`}
-            >
-              {section.anchorLinkName.toUpperCase()}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+<header class:list={['absolute', 'top-0', 'z-50', 'max-w-screen']}>
+  <nav class:list={['p-10', 'md:flex', 'hidden']}>
+    <HeaderMenu />
+  </nav>
+  <nav
+    class:list={[
+      'p-5', 
+      'md:hidden',
+      'flex',
+      'items-center',
+      'justify-center',
+      'gap-10',
+    ]}
+  >
+    <HamburgerMenu client:load />
   </nav>
 </header>
