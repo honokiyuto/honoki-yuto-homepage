@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://honokiyuto.github.io',
+  base: 'honoki-yuto-homepage',
   devToolbar: {
     enabled: false,
   },
