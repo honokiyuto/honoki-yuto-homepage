@@ -10,10 +10,11 @@ export const ImageCommon = ({
   isCover = true,
   isTop = false,
 }: Props) => {
+  const baseUrl = import.meta.env.BASE_URL;
   return (
     <div className="h-full flex items-center justify-center">
       <img
-        src={src}
+        src={`${baseUrl}${src}`}
         alt={alt}
         className={`w-full h-full ${isCover ? 'object-cover' : 'object-contain'} ${isTop ? 'object-top' : 'object-center'}`}
       />
