@@ -1,9 +1,28 @@
-import { LinkButton } from '../ui/LinkButton';
-import type { Section } from '../ui/MultiScroll/constants';
-import { TextTyping } from '../ui/TextTyping';
+import { LinkList } from '../ui/LinkList';
+import type { Links } from '../ui/LinkList/types';
+import type { Section } from '../ui/MultiScroll/types';
 import { ImageCommon } from './ImageCommon';
 import { SectionCommon } from './SectionCommon';
 import { TopLeft, TopRight } from './Top';
+
+const LINKS = {
+  GITHUB: {
+    label: 'GitHub',
+    href: 'https://github.com/honokiyuto',
+  },
+  QIITA: {
+    label: 'Qiita',
+    href: 'https://qiita.com/dachscafe',
+  },
+  SKEB: {
+    label: 'Skeb',
+    href: 'https://skeb.jp/@cafe_dachscafe',
+  },
+  X: {
+    label: 'X',
+    href: 'https://x.com/cafe_dachscafe',
+  },
+} as const satisfies Record<string, Links>;
 
 export const sections: Section[] = [
   {
@@ -28,12 +47,12 @@ export const sections: Section[] = [
         title="engineer"
         links={[
           {
-            label: 'GitHub',
-            href: 'https://github.com/honokiyuto',
+            label: LINKS.GITHUB.label,
+            href: LINKS.GITHUB.href,
           },
           {
-            label: 'Qiita',
-            href: 'https://qiita.com/dachscafe',
+            label: LINKS.QIITA.label,
+            href: LINKS.QIITA.href,
           },
         ]}
       />
@@ -47,12 +66,12 @@ export const sections: Section[] = [
         title="illustrator"
         links={[
           {
-            label: 'Skeb',
-            href: 'https://skeb.jp/@cafe_dachscafe',
+            label: LINKS.SKEB.label,
+            href: LINKS.SKEB.href,
           },
           {
-            label: 'X',
-            href: 'https://x.com/cafe_dachscafe',
+            label: LINKS.X.label,
+            href: LINKS.X.href,
           },
         ]}
       />
@@ -78,5 +97,10 @@ export const sections: Section[] = [
         <h2 className="text-2xl font-bold">Coming soon...</h2>
       </div>
     ),
+  },
+  {
+    anchorLinkName: 'links',
+    left: <SectionCommon title="links" />,
+    right: <LinkList links={Object.values(LINKS)} />,
   },
 ];
