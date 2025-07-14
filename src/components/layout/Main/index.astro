@@ -2,6 +2,15 @@
 import { MultiScroll } from '@/components/ui/MultiScroll';
 ---
 
-<main class="h-screen w-screen overflow-hidden">
+<main
+  class:list={[
+    'absolute',
+    'top-0',
+    'left-0',
+    'h-dvh',
+    'w-dvw',
+    'overflow-hidden',
+  ]}
+>
   <MultiScroll client:visible />
 </main>
