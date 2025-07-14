@@ -12,6 +12,8 @@ export const LinkList = ({ links }: Props) => {
           <li key={link.href}>
             <a
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xl text-shadow-lg font-light tracking-widest uppercase hover:opacity-50 transition-opacity duration-300 ease-in-out"
             >
               {link.label}
