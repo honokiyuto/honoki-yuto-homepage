@@ -16,11 +16,30 @@ export const TopLeft = () => {
     </div>
   );
 };
-
 export const TopRight = () => {
   return (
-    <div className="h-full flex md:items-center items-end justify-center bg-black">
-      <Orb hue={260} hoverIntensity={0.75} rotateOnHover={true} />
-    </div>
+    <>
+      <style>
+        {`
+        @keyframes fadeInBlur {
+          from {
+            opacity: 0;
+            filter: blur(10px);
+          }
+        }
+      `}
+      </style>
+      <div className="bg-black h-full w-full">
+        <div
+          className="h-full flex md:items-center items-end justify-center bg-black"
+          style={{
+            animation: 'fadeInBlur 2s ease-in',
+            animationFillMode: 'forwards',
+          }}
+        >
+          <Orb hue={260} hoverIntensity={0.75} rotateOnHover={true} />
+        </div>
+      </div>
+    </>
   );
 };
