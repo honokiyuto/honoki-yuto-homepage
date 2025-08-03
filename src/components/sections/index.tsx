@@ -14,6 +14,10 @@ const LINKS = {
     label: 'Qiita',
     href: 'https://qiita.com/dachscafe',
   },
+  ZENN: {
+    label: 'Zenn',
+    href: 'https://zenn.dev/dachscafe',
+  },
   SKEB: {
     label: 'Skeb',
     href: 'https://skeb.jp/@cafe_dachscafe',
@@ -35,7 +39,7 @@ export const sections: Section[] = [
     left: (
       <SectionCommon
         title="about"
-        description="「Cafe」と申します。このホームページは私の趣味を発信する場として、今後の活動の出発点としたいと考えています。「エンジニアとしての私」、「絵師としての私」、「公認心理師としての私」の3つを通じて、自分を表現していけたらと思っています。"
+        description="honokiyutoと申します。ペンネームは「Cafe」です。このホームページは私の趣味を発信する場として、今後の活動の出発点としたいと考えています。「エンジニアとしての私」、「絵師としての私」、「公認心理師としての私」の3つを通じて、自分を表現していけたらと思っています。"
       />
     ),
     right: <ImageCommon src="/img/sign_img.png" alt="about" isCover={false} />,
@@ -53,6 +57,10 @@ export const sections: Section[] = [
           {
             label: LINKS.QIITA.label,
             href: LINKS.QIITA.href,
+          },
+          {
+            label: LINKS.ZENN.label,
+            href: LINKS.ZENN.href,
           },
         ]}
       />
