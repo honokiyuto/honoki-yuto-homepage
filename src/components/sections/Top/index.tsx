@@ -8,7 +8,7 @@ export const TopLeft = () => {
       <div className="h-full flex md:items-center items-start justify-center bg-black">
         <div className="p-10 max-w-3/4">
           <TextTyping isGradient>
-            Welcome to the Cafe's Entrance 2023
+            {`Welcome to the Cafe's Entrance ${new Date().getFullYear()}`}
           </TextTyping>
         </div>
       </div>
