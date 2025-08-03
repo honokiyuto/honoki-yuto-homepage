@@ -25,11 +25,11 @@ export const ScrollPanelNarrowScreen = ({
         >
           <div className="flex flex-col h-full w-full">
             {/* 上半分: 右セクション */}
-            <div className="h-1/2">
+            <div className="h-5/9">
               {upperComponents[index] && upperComponents[index]}
             </div>
             {/* 下半分: 左セクション */}
-            <div className="h-1/2">
+            <div className="h-4/9">
               {lowerComponents[index] && lowerComponents[index]}
             </div>
           </div>
